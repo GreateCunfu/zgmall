@@ -1,6 +1,7 @@
 package com.op.marvel.dc.zhg38.common.source.bean.vo;
 
-import com.op.marvel.dc.zhg38.source.utils.JsonUtil;
+
+import com.op.marvel.dc.zhg38.common.source.utils.JsonUtil;
 
 import java.io.Serializable;
 
