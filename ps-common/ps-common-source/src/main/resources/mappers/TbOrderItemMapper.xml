@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.op.marvel.dc.zhg38.common.mapper.TbOrderItemMapper">
+  <resultMap id="BaseResultMap" type="com.op.marvel.dc.zhg38.common.pojo.TbOrderItem">
+    <result column="item_id" jdbcType="VARCHAR" property="itemId" />
+    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="price" jdbcType="BIGINT" property="price" />
+    <result column="total_fee" jdbcType="BIGINT" property="totalFee" />
+    <result column="pic_path" jdbcType="VARCHAR" property="picPath" />
+  </resultMap>
+  <insert id="insert" parameterType="com.op.marvel.dc.zhg38.common.pojo.TbOrderItem">
+    insert into tb_order_item (item_id, order_id, num, 
+      title, price, total_fee, 
+      pic_path)
+    values (#{itemId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, #{num,jdbcType=INTEGER}, 
+      #{title,jdbcType=VARCHAR}, #{price,jdbcType=BIGINT}, #{totalFee,jdbcType=BIGINT}, 
+      #{picPath,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.op.marvel.dc.zhg38.common.pojo.TbOrderItem">
+    insert into tb_order_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="totalFee != null">
+        total_fee,
+      </if>
+      <if test="picPath != null">
+        pic_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=BIGINT},
+      </if>
+      <if test="totalFee != null">
+        #{totalFee,jdbcType=BIGINT},
+      </if>
+      <if test="picPath != null">
+        #{picPath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
