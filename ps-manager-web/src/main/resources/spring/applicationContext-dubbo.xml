@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+">
+
+  <!-- 发布dubbo 服务 -->
+  <!-- 提供方应用信息,用于计算依赖关系 -->
+  <dubbo:application name="dubbo-manager-web-client"/>
+  <!-- 注册中心地址 -->
+  <!--<dubbo:registry protocol="zookeeper" address="10.8.33.120:2181"/>-->
+  <dubbo:registry protocol="zookeeper" address="192.168.0.102:2181"/>
+  <!-- 声明需要订阅的服务接口 -->
+  <dubbo:reference interface="com.op.marvel.dc.zhg38.manager.service.ITbItemService" id="iTbItemService"/>
+  <dubbo:reference interface="com.op.marvel.dc.zhg38.manager.service.ITbItemCatService" id="iTbItemCatService"/>
+
+
+</beans>

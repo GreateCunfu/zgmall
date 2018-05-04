@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+">
+    <!-- 连接池配置 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <!-- 最大连接数 -->
+        <property name="maxTotal" value="${maxTotal}" />
+        <!-- 最大空闲连接数 -->
+        <property name="maxIdle" value="${maxIdle}" />
+        <!-- 每次释放连接的最大数目 -->
+        <property name="numTestsPerEvictionRun" value="${numTestsPerEvictionRun}" />
+        <!-- 释放连接的扫描间隔（毫秒） -->
+        <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}" />
+        <!-- 连接最小空闲时间 -->
+        <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}" />
+        <!-- 连接空闲多久后释放, 当空闲时间>该值 且 空闲连接>最大空闲连接数 时直接释放 -->
+        <property name="softMinEvictableIdleTimeMillis" value="${softMinEvictableIdleTimeMillis}" />
+        <!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 -->
+        <property name="maxWaitMillis" value="${maxWaitMillis}" />
+        <!-- 在获取连接的时候检查有效性, 默认false -->
+        <property name="testOnBorrow" value="${testOnBorrow}" />
+        <!-- 在空闲时检查有效性, 默认false -->
+        <property name="testWhileIdle" value="${testWhileIdle}" />
+        <!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true -->
+        <property name="blockWhenExhausted" value="${blockWhenExhausted}" />
+    </bean>
+
+    <!-- redis单机 通过连接池 -->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="close">
+        <constructor-arg name="poolConfig" ref="jedisPoolConfig"/>
+        <constructor-arg name="host" value="${redis-host-1}"/>
+        <constructor-arg name="port" value="${redis-port-1}"/>
+    </bean>
+  <bean id="jedisClientPool" class="com.op.marvel.dc.zhg38.common.source.jedis.JedisClientPool"/>
+
+
+
+    <!--<bean id="jedisCluster" class="com.monkey.JedisClusterFactory">
+        <property name="addressConfig">
+            <value>classpath:redis.properties</value>
+        </property>
+        <property name="addressKeyPrefix" value="cluster" />   &lt;!&ndash;  属性文件里  key的前缀 &ndash;&gt;
+
+        <property name="timeout" value="300000" />
+        <property name="maxRedirections" value="6" />
+        <property name="genericObjectPoolConfig" ref="jedisPoolConfig" />
+    </bean>
+
+    <bean id="jedisClientCluster" class="ccom.op.marvel.dc.zhg38.source.jedis.JedisClientCluster"/>-->
+</beans>
