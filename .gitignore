@@ -20,3 +20,22 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+# 下文中的 "当前目录" 是指.gitignore 文件所在的目录
+
+# 所有路径下 的文件,文件夹
+
+.idea
+
+
+# 所有路径下iml 后缀的文件
+
+*.iml
+
+
+# 仅当前目录下一层目录下的 target 目录及其内容
+
+/*/target/
+
+#去除jrebel
+
+rebel.xml
