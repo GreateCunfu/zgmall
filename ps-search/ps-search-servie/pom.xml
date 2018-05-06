@@ -19,7 +19,7 @@
 
         <dependency>
             <groupId>com.op.marvel.dc.zhg38</groupId>
-            <artifactId>ps-search-interface</artifactId>
+            <artifactId>ps-search-interfce</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
