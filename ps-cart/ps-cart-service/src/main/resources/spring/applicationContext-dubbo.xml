@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+">
+
+  <!-- 发布dubbo 服务 -->
+    <!-- 提供方应用信息,用于计算依赖关系 -->
+    <dubbo:application name="dubbo-cart"/>
+    <!-- 注册中心地址 -->
+    <!--<dubbo:registry protocol="zookeeper" address="10.8.33.120:2181"/>-->
+  <dubbo:registry protocol="zookeeper" address="10.9.2.181:2181"/>
+    <!-- 用dubbo 协议在20880 端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20884"/>
+    <!-- 声明需要提供的服务接口 -->
+    <dubbo:service interface="com.op.marvel.dc.zhg38.cart.service.ITbCartService" ref="tbCartServiceImpl" timeout="30000"/>
+
+
+<!---->
+</beans>
